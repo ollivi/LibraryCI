@@ -10,5 +10,32 @@
 	<?php
 		include("layouts/menu.php");
 	?>
+
+	<div class="col-lg-6">
+		<div class="panel panel-default">
+		<div class="panel-heading">Vos fichier</div>
+			<table class="table">
+				<thead>
+					<th>Apperçu</th>
+					<th>Nom</th>
+					<th>Url</th>
+					<th>Gestion</th>
+				</thead>
+				<tbody>
+					<?php
+						for($i = 0; $i < count($info); $i++)
+						{
+							echo "<tr>";
+							echo "<td><img src=".base_url().$info[$i]->url." alt='Icone' class='miniature'></td>";
+							echo "<td>" . $info[$i]->file_name . "</td>";
+							echo "<td>" . base_url() . $info[$i]->url . "</td>";
+							echo "<td>modifier, telecharger, supprimer</td>";
+							echo "</tr>";
+						}
+					?>
+				</tbody>
+			</table>
+		</div>
+	</div>
 </body>
 </html>

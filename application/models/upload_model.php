@@ -11,7 +11,7 @@ class Upload_model extends CI_Model
 	}
 
 	//function to add the file informations to the database
-	public function add_file($tmp_name, $name, $targetFile)
+	public function add_file($tmp_name, $name, $min_path)
 	{
 		//check if a file with this name is already in the database
 		$this->db->where('temp_name', $tmp_name);
@@ -24,7 +24,7 @@ class Upload_model extends CI_Model
 				'user_id'  	=> $this->session->userdata('user_id'),
 				'temp_name' => $tmp_name,
 				'file_name' => $name,
-				'url'       => $targetFile
+				'url'       => $min_path
 				);
 
 			$this->db->insert('files', $data);
@@ -38,6 +38,7 @@ class Upload_model extends CI_Model
 		//retrieve the user_id from the session
 		$user_id = $this->session->userdata('user_id');
 
+		$this->db->select("file_name, url");
 		$this->db->where("user_id", $user_id);
 
 		//find all the results from the table "files" with the user_id corresponding to the user logged

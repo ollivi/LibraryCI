@@ -13,10 +13,12 @@
 		include("layouts/menu.php");
 	?>
 
-	<form class="dropzone" action="<?php echo base_url();?>upload/new" class="dropzone" method="post">
-		<div class="fallback">
-			<input name="file" type="file" multiple />
-		</div>
-	</form>
+	<div class="col-lg-6">
+		<form class="dropzone" action="<?php echo base_url();?>upload/new" class="dropzone" method="post">
+			<div class="fallback">
+				<input name="file" type="file" multiple />
+			</div>
+		</form>
+	</div>
 </body>
 </html>

@@ -88,3 +88,14 @@ h1
 	margin-left: 33%;
 	margin-top: 150px;
 }
+
+.miniature
+{
+	width: 100px;
+	height: 100px;
+}
+
+td, th
+{
+	text-align: center;
+}

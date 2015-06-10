@@ -39,6 +39,9 @@ class Upload extends CI_Controller
 			//set a random name to avoid duplicates
 			$tmp_name = rand(0, 999).time().$_FILES['file']['name'];
 
+			//path for miniatures
+			$min_path = 'public/uploads/' . $tmp_name;
+
 			//set the path where the file will be put
 			$targetPath = $_SERVER['DOCUMENT_ROOT'] . 'libraryci/public/uploads/';
 
@@ -47,7 +50,7 @@ class Upload extends CI_Controller
 			//move the file in the upload folder
 			move_uploaded_file($tempFile, $targetFile);
 
-			$this->upload_model->add_file($tmp_name, $name, $targetFile);
+			$this->upload_model->add_file($tmp_name, $name, $min_path);
 		}
 	}
 
@@ -58,8 +61,11 @@ class Upload extends CI_Controller
 		//if the user is logged and his username if the same as the profile he's trying to access
 		if($this->session->userdata('logged') == true && $this->session->userdata('username') == $username)
 		{
+			$data = $this->upload_model->user_files();
+			$info = array('info' => $data);
+
 			//show the files view
-			$this->load->view('files_view');
+			$this->load->view('files_view', $info);
 		}
 		else
 		{
