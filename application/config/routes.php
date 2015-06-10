@@ -56,5 +56,8 @@ $route['connexion'] = 'user/showlogin';
 $route['profile/(:any)'] = 'user/showprofile/$1';
 $route['update/(:any)'] = 'user/showupdate/$1';
 
+$route['upload'] = 'upload/showupload';
+$route['files/(:any)'] = 'upload/files/$1';
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
