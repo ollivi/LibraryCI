@@ -23,7 +23,7 @@
 						echo '<li><a href="'.base_url("profile/".$this->session->userdata('username')."").'">Profile</a></li>';
 						echo '<li>' . anchor('user/logout', 'Déconnexion') . '</li>';
 					}
-				?>s
+				?>
 
 				<?php
 					if($this->session->userdata('logged') == false)

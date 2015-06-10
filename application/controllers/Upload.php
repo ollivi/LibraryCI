@@ -8,6 +8,7 @@ class Upload extends CI_Controller
 		parent::__construct();
 		$this->load->model('user_model');
 		$this->load->helper('url');
+		$this->load->helper('html');
 		$this->load->helper('form');
 		$this->load->library('session');
 		$this->load->library('form_validation');
@@ -29,7 +30,14 @@ class Upload extends CI_Controller
 	//function to upload a file
 	public function new_file()
 	{
-
+		//if the array $_FILES is not empty
+		if(!empty($_FILES))
+		{
+			$tempFile = $_FILES['file']['tmp_name'];
+			$targetPath = $_SERVER['DOCUMENT_ROOT'] . 'libraryci/public/uploads/';
+			$targetFile = $targetPath . $_FILES['file']['name'];
+			move_uploaded_file($tempFile, $targetFile);
+		}
 	}
 
 
