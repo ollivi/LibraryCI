@@ -28,8 +28,8 @@
 							echo "<tr>";
 							echo "<td><img src=".base_url().$info[$i]->url." alt='Icone' class='miniature'></td>";
 							echo "<td>" . $info[$i]->file_name . "</td>";
-							echo "<td>" . base_url() . $info[$i]->url . "</td>";
-							echo "<td>modifier, telecharger, supprimer</td>";
+							echo "<td><a href=". base_url() . $info[$i]->url . ">". base_url() . $info[$i]->url ."</a></td>";
+							echo "<td>modifier, <a href=". base_url() . $info[$i]->url ." download=''>telecharger</a>, supprimer</td>";
 							echo "</tr>";
 						}
 					?>
