@@ -14,7 +14,7 @@
 	?>
 
 	<div class="col-lg-6">
-		<form class="dropzone" action="<?php echo base_url();?>upload/new" class="dropzone" method="post">
+		<form action="<?php echo base_url();?>upload/new" class="dropzone" method="post">
 			<div class="fallback">
 				<input name="file" type="file" multiple />
 			</div>

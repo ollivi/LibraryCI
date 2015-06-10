@@ -16,20 +16,34 @@
 		<div class="panel-heading">Vos fichier</div>
 			<table class="table">
 				<thead>
-					<th>Apperçu</th>
-					<th>Nom</th>
-					<th>Url</th>
-					<th>Gestion</th>
+					<tr>
+						<th>Apperçu</th>
+						<th>Nom</th>
+						<th>Url</th>
+						<th>Gestion</th>
+					</tr>
 				</thead>
 				<tbody>
 					<?php
 						for($i = 0; $i < count($info); $i++)
 						{
 							echo "<tr>";
-							echo "<td><img src=".base_url().$info[$i]->url." alt='Icone' class='miniature'></td>";
-							echo "<td>" . $info[$i]->file_name . "</td>";
-							echo "<td><a href=". base_url() . $info[$i]->url . ">". base_url() . $info[$i]->url ."</a></td>";
-							echo "<td>modifier, <a href=". base_url() . $info[$i]->url ." download=''>telecharger</a>, supprimer</td>";
+
+							echo 
+								"<td><img src=".base_url().$info[$i]->url." alt='Icone' class='miniature'></td>";
+
+							echo 
+								"<td>" . $info[$i]->file_name . "</td>";
+
+							echo 
+								"<td><a href=". base_url() . $info[$i]->url . ">". base_url() . $info[$i]->url ."</a></td>";
+
+							echo 
+								"<td>
+									<a href=".base_url().'files/update/'.$this->session->userdata('username').">modifier/supprimer</a>,
+									<a href=". base_url() . $info[$i]->url ." download=''>telecharger</a>
+								</td>";
+
 							echo "</tr>";
 						}
 					?>

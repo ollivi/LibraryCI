@@ -73,4 +73,21 @@ class Upload extends CI_Controller
 			redirect();
 		}
 	}
+
+
+	//function to display the update view for files
+	public function update($username)
+	{
+		//if the user is logged and his username if the same as the profile he's trying to access
+		if($this->session->userdata('logged') == true && $this->session->userdata('username') == $username)
+		{
+			//show the file update view
+			$this->load->view('update_file_view');
+		}
+		else
+		{
+			//else redirect to the index
+			redirect();
+		}
+	}
 }

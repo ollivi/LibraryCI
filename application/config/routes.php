@@ -59,6 +59,7 @@ $route['update/(:any)'] = 'user/showupdate/$1';
 $route['upload'] = 'upload/showupload';
 $route['files/(:any)'] = 'upload/files/$1';
 $route['upload/new'] = 'upload/new_file';
+$route['files/update/(:any)'] = 'upload/update/$1';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
