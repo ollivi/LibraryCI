@@ -6,7 +6,7 @@ class Upload extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('user_model');
+		$this->load->model('upload_model');
 		$this->load->helper('url');
 		$this->load->helper('html');
 		$this->load->helper('form');
@@ -34,9 +34,20 @@ class Upload extends CI_Controller
 		if(!empty($_FILES))
 		{
 			$tempFile = $_FILES['file']['tmp_name'];
+			$name = $_FILES['file']['name'];
+
+			//set a random name to avoid duplicates
+			$tmp_name = rand(0, 999).time().$_FILES['file']['name'];
+
+			//set the path where the file will be put
 			$targetPath = $_SERVER['DOCUMENT_ROOT'] . 'libraryci/public/uploads/';
-			$targetFile = $targetPath . $_FILES['file']['name'];
+
+			$targetFile = $targetPath . $tmp_name;
+
+			//move the file in the upload folder
 			move_uploaded_file($tempFile, $targetFile);
+
+			$this->upload_model->add_file($tmp_name, $name, $targetFile);
 		}
 	}
 

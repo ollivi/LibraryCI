@@ -47,7 +47,7 @@ class User_model extends CI_Model
 			$data = array(
 				'username'	=> $this->input->post('username'),
 				'email'		=> $this->input->post('email'),
-				'password'	=> md5($this->input->post('password')),
+				'password'	=> crypt($this->input->post('password'), "sejzo0zm3kd4kLK3klk1"),
 				'nom'		=> $this->input->post('nom'),
 				'prenom'	=> $this->input->post('prenom')
 				);

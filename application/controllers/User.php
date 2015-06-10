@@ -117,7 +117,7 @@ class User extends CI_Controller
 	public function login()
 	{
 		$username = $this->input->post('username');
-		$password = md5($this->input->post('password'));
+		$password = crypt($this->input->post('password'), "sejzo0zm3kd4kLK3klk1");
 
 		$result = $this->user_model->login($username, $password);
 
