@@ -14,30 +14,37 @@ class Upload extends CI_Controller
 	}
 
 
-	//fonction qui affiche la page d'upload
+	//function to display the upload page
 	public function ShowUpload()
 	{
-		//si l'utilisateur est bien connecté
+		//if the user is logged
 		if($this->session->userdata('logged') == true)
 		{
-			//on montre la vue upload
+			//display the upload view
 			$this->load->view('upload_view');
 		}
 	}
 
 
-	//fonction d'affichage des fichiers de l'utilisateur
+	//function to upload a file
+	public function new_file()
+	{
+
+	}
+
+
+	//function to display files of a user
 	public function files($username)
 	{
-		//si l'utilisateur est connecté et son nom d'utiliateur correspond a celui du profil auquel il essaie d'acceder
+		//if the user is logged and his username if the same as the profile he's trying to access
 		if($this->session->userdata('logged') == true && $this->session->userdata('username') == $username)
 		{
-			//on montre la vue files
+			//show the files view
 			$this->load->view('files_view');
 		}
 		else
 		{
-			//sinon on redirige vers l'accueil
+			//else redirect to the index
 			redirect();
 		}
 	}

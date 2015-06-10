@@ -3,9 +3,9 @@
 <head>
 	<meta charset="utf-8">
 	<title>Inscription</title>
-	<link rel="stylesheet" href="<?php echo base_url();?>/public/css/bootstrap.min.css">
-	<link rel="stylesheet" href="<?php echo base_url();?>/public/css/style.css">
-	<script type="text/javascript" src="<?php echo base_url();?>/public/js/jquery.js"></script>
+	<link rel="stylesheet" href="<?php echo base_url();?>public/css/bootstrap.min.css">
+	<link rel="stylesheet" href="<?php echo base_url();?>public/css/style.css">
+	<script type="text/javascript" src="<?php echo base_url();?>public/js/jquery.js"></script>
 </head>
 <body>
 	<?php include("layouts/menu.php"); ?>
@@ -62,6 +62,6 @@
 			<?php echo form_close(); ?>
 		</div>
 	</div>
-	<script type="text/javascript" src="<?php echo base_url();?>/public/js/form_check.js"></script>
+	<script type="text/javascript" src="<?php echo base_url();?>public/js/form_check.js"></script>
 </body>
 </html>
