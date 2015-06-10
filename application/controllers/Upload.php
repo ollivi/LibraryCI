@@ -61,6 +61,7 @@ class Upload extends CI_Controller
 		//if the user is logged and his username if the same as the profile he's trying to access
 		if($this->session->userdata('logged') == true && $this->session->userdata('username') == $username)
 		{
+			//get the files of this user
 			$data = $this->upload_model->user_files();
 			$info = array('info' => $data);
 
@@ -76,18 +77,32 @@ class Upload extends CI_Controller
 
 
 	//function to display the update view for files
-	public function update($username)
+	public function update($username, $id)
 	{
 		//if the user is logged and his username if the same as the profile he's trying to access
 		if($this->session->userdata('logged') == true && $this->session->userdata('username') == $username)
 		{
+			$info = array('id' => $id);
+
 			//show the file update view
-			$this->load->view('update_file_view');
+			$this->load->view('update_file_view', $info);
 		}
 		else
 		{
 			//else redirect to the index
 			redirect();
 		}
+	}
+
+
+	public function update_filename($user_id, $id)
+	{
+		$this->upload_model->update_file($user_id, $id);
+	}
+
+
+	public function delete_file($user_id, $id)
+	{
+		$this->upload_model->remove_file($user_id, $id);
 	}
 }

@@ -40,7 +40,7 @@
 
 							echo 
 								"<td>
-									<a href=".base_url().'files/update/'.$this->session->userdata('username').">modifier/supprimer</a>,
+									<a href=".base_url().'files/update/'.$this->session->userdata('username')."/".$info[$i]->id.">modifier/supprimer</a>,
 									<a href=". base_url() . $info[$i]->url ." download=''>telecharger</a>
 								</td>";
 
