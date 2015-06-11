@@ -20,6 +20,7 @@
 					{
 						echo '<li><a href="'.base_url("upload/").'">Upload</a></li>';
 						echo '<li><a href="'.base_url("files/".$this->session->userdata('username')."").'">Fichiers</a></li>';
+						echo '<li><a href="'.base_url("folders/".$this->session->userdata('username')."").'">Dossiers</a></li>';
 						echo '<li><a href="'.base_url("profile/".$this->session->userdata('username')."").'">Profile</a></li>';
 						echo '<li>' . anchor('user/logout', 'Déconnexion') . '</li>';
 					}
