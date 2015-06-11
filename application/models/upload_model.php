@@ -54,7 +54,7 @@ class Upload_model extends CI_Model
 		$this->db->where('id', $id);
 		$this->db->where('user_id', $user_id);
 
-		//check if there is a row corresponding to the user_id of the user and of the id of the file
+		//check if there is a row corresponding to the user_id of the user and with the id of the file
 		$query = $this->db->get("files");
 
 		if($query->num_rows() > 0)
@@ -79,7 +79,7 @@ class Upload_model extends CI_Model
 		$this->db->where('id', $id);
 		$this->db->where('user_id', $user_id);
 
-		//check if there is a row corresponding to the user_id of the user and of the id of the file
+		//check if there is a row corresponding to the user_id of the user and with the id of the file
 		$query = $this->db->get("files");
 
 		if($query->num_rows() > 0)
@@ -97,6 +97,40 @@ class Upload_model extends CI_Model
 			$this->db->delete('files');
 
 			redirect("/files/".$this->session->userdata("username"));
+		}
+		else
+		{
+			redirect();
+		}
+	}
+
+
+	//function to get the files information the user is looking for
+	public function get_info()
+	{
+		$word = $this->input->post('search');
+		$option = $this->input->post('option');
+
+		//check if the search information were entered to avoid errors
+		if(!empty($word) && !empty($option))
+		{
+			if($option == "1")
+			{
+				//if option is 1 get the row where the file name corresponds to the search
+				$this->db->where('file_name', $word);
+			}
+			else if($option == "2")
+			{
+				//if option is 2 get the row where in the url, there is the word corresponding to the search
+				$this->db->where("temp_name LIKE '%{$word}%'");
+			}
+			
+			$query = $this->db->get("files");
+
+			if($query->num_rows() > 0)
+			{
+				return $query->result();
+			}
 		}
 		else
 		{

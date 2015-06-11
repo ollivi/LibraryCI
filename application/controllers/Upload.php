@@ -105,4 +105,15 @@ class Upload extends CI_Controller
 	{
 		$this->upload_model->remove_file($user_id, $id);
 	}
+
+
+	//function to search a file
+	public function search($username)
+	{
+		$data = $this->upload_model->get_info();
+
+		$info = array('info' => $data);
+
+		$this->load->view('search_result_view', $info);
+	}
 }
