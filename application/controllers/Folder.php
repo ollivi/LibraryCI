@@ -38,6 +38,13 @@ class Folder extends CI_Controller
 	//function to create a folder
 	public function makeFolder($user_id)
 	{
+		$username = $this->session->userdata('username');
+		$foldername = $this->input->post('nom');
 
+		$path = "./public/uploads/" . $username . "/" . $foldername;
+
+		$create = mkdir($path, 0777);
+
+		redirect("/folders/".$this->session->userdata('username'));
 	}
 }

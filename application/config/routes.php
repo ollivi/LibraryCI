@@ -64,7 +64,7 @@ $route['files/change/(:any)/(:any)'] = 'upload/update_filename/$1/$2';
 $route['files/delete/(:any)/(:any)'] = 'upload/delete_file/$1/$2';
 
 $route['folders/(:any)'] = 'folder/showfolders/$1';
-$route['folders/create/(:any)'] = 'folder/makefolders/$1';
+$route['folders/create/(:any)'] = 'folder/makefolder/$1';
 
 $route['files/search/(:any)'] = 'upload/search/$1';
 

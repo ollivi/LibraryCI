@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 11 Juin 2015 à 17:27
+-- Généré le :  Jeu 11 Juin 2015 à 19:38
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -38,6 +38,32 @@ CREATE TABLE IF NOT EXISTS `files` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `folders`
+--
+
+CREATE TABLE IF NOT EXISTS `folders` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `folder_name` varchar(265) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `folders_files`
+--
+
+CREATE TABLE IF NOT EXISTS `folders_files` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `folder_id` int(11) NOT NULL,
+  `file_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `users`
 --
 
@@ -49,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `nom` varchar(265) NOT NULL,
   `prenom` varchar(265) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
 
 --
 -- Contenu de la table `users`
@@ -57,7 +83,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `nom`, `prenom`) VALUES
 (17, 'poiu', 'sevREdcjHJO5o', 'poi@po.po', 'poiu', 'poiu'),
-(18, 'kasi', 'seUWBTTypNb0Q', 'kash@kash.kash', 'kasi', 'kasi');
+(18, 'kasi', 'seUWBTTypNb0Q', 'kash@kash.kash', 'kasi', 'kasi'),
+(19, 'okii', 'se/IVmPpG3bfI', 'ok@ok.ok', 'okii', 'okii');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

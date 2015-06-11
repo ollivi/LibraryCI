@@ -53,6 +53,10 @@ class User_model extends CI_Model
 				);
 
 			$this->db->insert('users', $data);
+
+			$path = "./public/uploads/" . $this->input->post('username');
+
+			$create = mkdir($path, 0777);
 		}
 	}
 

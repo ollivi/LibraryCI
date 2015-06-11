@@ -12,5 +12,10 @@ class Folder_model extends CI_Model
 	}
 
 
+	//function to add the folder in the database
+	public function add_folder($user_id)
+	{
+
+	}
 }
 ?>
