@@ -33,7 +33,6 @@ class Upload extends CI_Controller
 		//if the array $_FILES is not empty
 		if(!empty($_FILES))
 		{
-			$tempFile = $_FILES['file']['tmp_name'];
 			$name = $_FILES['file']['name'];
 
 			//set a random name to avoid duplicates
@@ -42,15 +41,17 @@ class Upload extends CI_Controller
 			//path for miniatures
 			$min_path = 'public/uploads/' . $tmp_name;
 
-			//set the path where the file will be put
-			$targetPath = $_SERVER['DOCUMENT_ROOT'] . 'libraryci/public/uploads/';
+			$config['upload_path'] = './public/uploads/';
 
-			$targetFile = $targetPath . $tmp_name;
+			//this line is the list of the extensions that are allowed to be uploaded to avoid security problems
+			$config['allowed_types'] = 'gif|jpg|png|jpeg|txt|pdf|bmp|docx';
 
-			//move the file in the upload folder
-			move_uploaded_file($tempFile, $targetFile);
+			$this->load->library('upload', $config);
 
-			$this->upload_model->add_file($tmp_name, $name, $min_path);
+			if($this->upload->do_upload("file"))
+			{
+				$this->upload_model->add_file($tmp_name, $name, $min_path);
+			}
 		}
 	}
 
