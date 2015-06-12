@@ -21,8 +21,9 @@ class Folder extends CI_Controller
 		//if the user is logged and his username if the same as the profile he's trying to access
 		if($this->session->userdata('logged') == true && $this->session->userdata('username') == $username)
 		{
-			$id = $this->session->userdata('user_id');
-			$info = array('id' => $id);
+			//get the list of folder already existing
+			$data = $this->folder_model->get_folders($this->session->userdata('user_id'));
+			$info = array('info' => $data);
 
 			//show the folder view
 			$this->load->view('folder_view', $info);
@@ -39,11 +40,25 @@ class Folder extends CI_Controller
 	public function makeFolder($user_id)
 	{
 		$username = $this->session->userdata('username');
+		$subfolder = $this->input->post('folder');
 		$foldername = $this->input->post('nom');
 
-		$path = "./public/uploads/" . $username . "/" . $foldername;
+		//check if a sub folder was specified
+		if($subfolder != "")
+		{
+			//set the path where the folder will be created
+			$path = "./public/uploads/" . $username . "/" . $subfolder . "/" . $foldername;
+		}
+		else
+		{
+			$path = "./public/uploads/" . $username . "/" . $foldername;
+		}
 
+		//create the folder
 		$create = mkdir($path, 0777);
+
+		//add the folder information to the database
+		$this->folder_model->add_folder($this->session->userdata('user_id'), $foldername);
 
 		redirect("/folders/".$this->session->userdata('username'));
 	}
